@@ -1,0 +1,110 @@
+{% extends 'main.html'%}
+{% block content %}
+
+
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <div class="container-fluid">
+        <a class="navbar-brand" href="#">Portfolio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="home()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Home
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/my_experience">Experience</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/projects">Projects</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/skills">Skills</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/awards">Awards</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/my_education/">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contacts">Contacts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blogs">Blogs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/resume">Resume</a>
+            </li>
+            
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+          </form>
+        </div>
+      </div-->
+      <nav id="navbar" class="navbar">
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+    <ul>
+        	 <li class="nav-item">
+              <a class="nav-link" href="#" onclick="home()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Home
+              </a>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#" onclick="about()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                About
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="services()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Services
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="portfolio()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Portfolio
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="resume()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Resume
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="contact()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Contact Me
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="hub()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                My Hub
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Login
+              </a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+  </header>
+  {% endblock %}

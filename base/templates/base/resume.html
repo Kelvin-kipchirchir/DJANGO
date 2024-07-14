@@ -1,0 +1,53 @@
+{% extends 'main.html'%}
+{% block content %}
+{% load static %}
+ <style>
+ 	.resume-container{
+ 		display: grid;
+ 		grid-template-columns: 1fr 1fr;
+        background-color: var(--color-dark);
+ 	}
+ </style>
+  <div id="Resume">
+			<h3>Summary</h3>
+		<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur illo tenetur
+              facilis sunt nemo debitis quisquam hic atque aut? Ducimus alias placeat optio
+              accusamus repudiandae quis ab ex exercitationem rem?
+          </p>
+			<div class="resume-container">
+ 	<div>
+ 		<h3>Education</h3>
+ 		{% for education in education %}
+        <h5>{{education.level}} | {{education.course}}</h5>
+		<div class="avatar avatar--small active">
+            <img src="{{education.avatar.url}}" />
+          </div><h5>{{education.institution}}</h5>
+		<h5>{{education.year_started}}---{{education.year_completed}}</h5>
+		<h5>{{education.status}}</h5>
+		{% endfor %}
+ 		
+	
+ 	</div>
+
+ 	<div>
+ 		<h3>Proffessional Experience</h3>
+ 		{% for experience in experience%}
+		<h5>{{experience.role}}</h5>
+		<h5>{{experience.year_started}}----{{experience.year_completed}}</h5>
+		<h5><div class="avatar avatar--small active">
+            <img src="{{experience.avatar.url}}" /> {{experience.company}}</h5>
+		<h5>{{experience.city}},{{experience.country}}</h5>
+		<h5>{{experience.roles_played}}</h5>
+		
+		{% endfor %}
+ 		
+ 	</div>
+
+ 	
+</div>
+	</div>
+
+
+
+
+{% endblock content %}

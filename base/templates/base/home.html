@@ -1,0 +1,140 @@
+
+{% extends 'main.html'%}
+{% block content %}
+ {% include 'navbar.html' %}
+ <style>
+  
+ 		#homediv{
+    display: grid;
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-light-gray);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  }
+	#aboutdiv{
+    display: none;
+  }
+  #servicesdiv{
+    display: none;
+  }
+   #portfoliodiv{
+    display: none;
+  }
+  #resumediv{
+    display: none;
+  }
+  #contactsdiv{
+    display: none;
+  }
+  #hubdiv{
+    display: none;
+  }
+ 
+	
+</style>
+  
+<main> 
+	   <div id="homediv">
+			 <!-- ======= Hero Section ======= -->
+            <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+                 <div class="hero-container" data-aos="fade-in">
+                   <h1>Hello am Kelvin Kiptoo <span class="typed" data-typed-items="Alex Smith, Software Developer,Scientist,Cyber sec"></span></h1>
+        <p>Software Developer,Data Scientist,Security Analyst</p>
+                 </div>
+             </section><!-- End Hero -->
+       </div>
+		<div id="aboutdiv">
+           {% include 'base/about.html'%}
+       </div>
+       <div id="servicesdiv">
+           {% include 'base/services.html'%}
+       </div>
+       <div id="portfoliodiv">
+            {% include 'base/portfolio.html'%}
+       </div>
+       <div id="resumediv">
+           {% include 'base/resume.html'%}
+       </div>
+       <div id="contactsdiv">
+            {% include 'base/contact.html'%}
+       </div>
+       <div id="hubdiv">
+            {% include 'base/hub.html'%}
+       </div>
+	</main>
+		<div>
+			<footer>created by Dragon works</footer>
+		</div>
+	
+
+<script type="text/javascript">
+ 
+     function home(){
+     	var home=document.getElementById('homediv').style.display = 'block';
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+        var services=document.getElementById('servicesdiv').style.display = 'none';
+        var portfolio=document.getElementById('portfoliodiv').style.display = 'none';
+        var resume=document.getElementById('resumediv').style.display = 'none';
+        var contacts=document.getElementById('contactsdiv').style.display = 'none';
+        var hub=document.getElementById('hubdiv').style.display = 'none';
+     }
+     function about(){
+     	var home=document.getElementById('homediv').style.display = 'none';
+        var about=document.getElementById('aboutdiv').style.display = 'block';
+        var services=document.getElementById('servicesdiv').style.display = 'none';
+        var portfolio=document.getElementById('portfoliodiv').style.display = 'none';
+        var resume=document.getElementById('resumediv').style.display = 'none';
+        var contacts=document.getElementById('contactsdiv').style.display = 'none';
+        var hub=document.getElementById('hubdiv').style.display = 'none';
+     }
+      function services(){
+     	var home=document.getElementById('homediv').style.display = 'none';
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+        var services=document.getElementById('servicesdiv').style.display = 'block';
+        var portfolio=document.getElementById('portfoliodiv').style.display = 'none';
+        var resume=document.getElementById('resumediv').style.display = 'none';
+        var contacts=document.getElementById('contactsdiv').style.display = 'none';
+        var hub=document.getElementById('hubdiv').style.display = 'none';
+     }
+     function portfolio(){
+     	var home=document.getElementById('homediv').style.display = 'none';
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+        var services=document.getElementById('servicesdiv').style.display = 'none';
+        var portfolio=document.getElementById('portfoliodiv').style.display = 'block';
+        var resume=document.getElementById('resumediv').style.display = 'none';
+        var contacts=document.getElementById('contactsdiv').style.display = 'none';
+        var hub=document.getElementById('hubdiv').style.display = 'none';
+     }
+     function resume(){
+     	var home=document.getElementById('homediv').style.display = 'none';
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+        var services=document.getElementById('servicesdiv').style.display = 'none';
+        var portfolio=document.getElementById('portfoliodiv').style.display = 'none';
+        var resume=document.getElementById('resumediv').style.display = 'block';
+        var contacts=document.getElementById('contactsdiv').style.display = 'none';
+        var hub=document.getElementById('hubdiv').style.display = 'none';
+     }
+      function contact(){
+     	var home=document.getElementById('homediv').style.display = 'none';
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+        var services=document.getElementById('servicesdiv').style.display = 'none';
+        var portfolio=document.getElementById('portfoliodiv').style.display = 'none';
+        var resume=document.getElementById('resumediv').style.display = 'none';
+        var contacts=document.getElementById('contactsdiv').style.display = 'block';
+        var hub=document.getElementById('hubdiv').style.display = 'none';
+     }
+      function hub(){
+      var home=document.getElementById('homediv').style.display = 'none';
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+        var services=document.getElementById('servicesdiv').style.display = 'none';
+        var portfolio=document.getElementById('portfoliodiv').style.display = 'none';
+        var resume=document.getElementById('resumediv').style.display = 'none';
+        var contacts=document.getElementById('contactsdiv').style.display = 'none';
+        var hub=document.getElementById('hubdiv').style.display = 'block';
+     }
+
+ </script>
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+     <link rel="stylesheet" href="{% static 'styles/style.css' %}"/>
+  
+
+    <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <!--link href="{% static 'css/style.css' %}" rel="stylesheet"-->
+
+
+    <title>Porfolio</title>
+  </head>
+
+  <body>
+    <header class="header header--loggedIn">
+     
+    </header>
+   
+
+{% if messages %}
+<ul class="messages">
+	{% for message in messages %}
+	<li>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<!--img src="{% static 'images/wolf.jpg'%}"-->
+{% block content %}
+
+{% endblock %}
+    <script src="{% static 'js/script.js' %}"></script>
+     <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

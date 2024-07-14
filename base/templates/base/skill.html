@@ -1,0 +1,15 @@
+
+{% extends 'main.html'%}
+{% block content %}
+<main>
+	<h2>skill page </h2>
+	<div>
+		<div>
+			{% for skill in skills %}
+			<h4>{{skill.name}}</h4>
+			
+			{% endfor %}
+		</div>
+	</div>
+</main>
+{% endblock content %}

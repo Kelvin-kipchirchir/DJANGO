@@ -1,0 +1,51 @@
+{% extends 'main.html'%}
+{% block content %}
+<style>
+	.contact-container{
+		display: grid;
+		grid-template-columns: 3fr 1fr ;
+	}
+</style>
+<h3>Contacts Page</h3>
+	<p>Wanna conect with the guru</p>
+
+
+
+<div class="contact-container">
+	<div>
+		<h3>Get in touch</h3>
+		<div>
+			<ul>
+				<li>Project 1</li>
+				<li>Project 1</li>
+				<li>Project 1</li>
+			</ul>
+		</div>
+		
+	</div>
+	
+	<div>
+		<h3>Services</h3>
+		<div>
+			<form>
+				<label>Your name:</label><br>
+				<input type="text" name="name" placeholder="Your name"><br>
+				<label>Your email:</label><br>
+				<input type="email" name="email" placeholder="Your mail..."><br>
+				<label>subject:</label><br>
+				<input type="text" name="subject" placeholder="Your subject...."><br>
+				<label>Message:</label><br>
+				<textarea name="Message" placeholder="Your Message....">
+					
+				</textarea>
+				<input type="submit"><br>
+			</form>
+		</div>
+
+	</div>
+	
+	
+</div>
+
+
+{% endblock content %}

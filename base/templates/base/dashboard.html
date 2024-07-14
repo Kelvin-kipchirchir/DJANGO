@@ -1,0 +1,576 @@
+{% extends 'main.html'%}
+{% block content %}
+<style>
+
+.avatar.active::after {
+  background-color: var(--color-success);
+}
+
+.avatar.avatar--small img {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.avatar.avatar--small:after {
+  width: 0.7rem;
+  height: 0.7rem;
+  bottom: 0px;
+  right: -6px;
+}
+
+.avatar.avatar--medium img {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+}
+
+.avatar.avatar--medium:after {
+  width: 0.7rem;
+  height: 0.7rem;
+  bottom: 0px;
+  right: -6px;
+}
+
+.avatar.avatar--large img {
+  display: block;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.avatar.avatar--large:after {
+  width: 1rem;
+  height: 1rem;
+  bottom: 2px;
+  right: 3.5px;
+}
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    #profile{
+    	width:50px;
+    height:50px;
+    border-radius: 10%;
+    }
+    #profilediv{
+    background-color: yellowgreen;
+  }
+  #interface{
+  	 display: grid;
+  }
+  #notificationdiv{
+    background-color: powderblue;
+    display: none;
+  }
+  #resumediv{
+    background-color: powderblue;
+    display: none;
+  }
+  #contactsdiv{
+    background-color: powderblue;
+    display: none;
+  }
+  #quotesdiv{
+    background-color: powderblue;
+    display: none;
+  }
+  #experiencediv{
+  	display: none;
+  }
+  #img{
+    widows: 150px;
+    height:150px;
+    border-radius: 10%;
+  }
+  .profile{
+  	background-color: blue;
+  }
+  
+  </style>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">
+ 
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+     
+	<a class="nav-link px-3" href="/logout/">Sign out</a>
+
+	
+        
+      </div>
+    </div>
+  </header>
+<div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3 sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <p class="lead">
+      <img class="mb-4 rounded-circle" src="" alt="" width="100" height="100" role="img" aria-label="Placeholder: 100x100" >
+      <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
+    </p>
+                <span data-feather="home" class="align-text-bottom"></span>
+                Profile
+              </a>
+     
+            </li>
+              <div class="profile">
+              {% for about in abouts %}
+              <p>{{about.bio}}</p>
+              {% endfor %}
+
+              {% for personalinfo in personalinfo %}
+              <p>{{personalinfo.info}}</p>
+              <p>{{personalinfo.role}}</p>
+              {% endfor %}
+               </div>
+           
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+            <span>Operation</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle" class="align-text-bottom"></span>
+            </a>
+          </h6>
+           <li class="nav-item">
+              <a class="nav-link" href="#" onclick="about()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                About
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="experience()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Experience
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="projects()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Projects
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="skills()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Skills
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="awards()">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Awards
+              </a>
+            </li>
+            <li class="nav-item">
+              <!--a class="nav-link" href="#" onclick="education()"-->
+                <a class="nav-link" href="">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Education
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" onclick="certifications()">
+              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+              Certification</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="notifications()">
+                <span data-feather="file" class="align-text-bottom"></span>
+                Notifications
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="contacts()">
+                <span data-feather="users" class="align-text-bottom"></span>
+                Contacts
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="blogs()">
+                <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                Blogs
+              </a>
+            </li>
+          </ul>
+  <hr>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+            <span>App Settings</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle" class="align-text-bottom"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Security
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
+
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Dashboard</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar" class="align-text-bottom"></span>
+              This week
+            </button>
+          </div>
+        </div>
+
+
+      <div id="interface">
+<section>
+       <div id="aboutdiv">
+           <h2>About</h2>
+           <p>sggsgsgsgsgs</p>
+       </div>
+       <div id="experiencediv">
+          <h2>Experience</h2>
+           <div>
+ 		<h3>Education</h3>
+ 		<a href="{% url 'add-education' %}" class="btn btn-primary">NEW ENTRY</a>
+ 		<table border="5">
+    <thead>
+    	<td>INSTITUTION ICON</td>
+    	<td>INSTITUTION NAME</td>
+        <td>EDUCATION LEVEL</td>
+        <td>EDUCATION COURSE</td>
+        <td>YEAR STARTED</td>
+        <td>YEAR ENDED</td>
+        <td>ACTION</td>
+    </thead>
+    {% for education in education %}
+    <tr><td><!--div class="avatar avatar--small active">
+            <img src="{{education.avatar.url}}" /></td-->
+            <td>{{education.institution}}</td>
+        <td>{{education.level}} </td>
+        <td>{{education.course}}</td>
+        
+        <td>{{education.year_started}}</td>
+        <td>{{education.year_completed}}</td>
+        <td>
+        	<a href="" class="btn btn-info">Read More</a>
+        	<a href="{% url 'update-education' education.id %}" class="btn btn-warning">Edit</a>
+        	<a href="" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+ 	</div>
+         
+         	<div>
+ 		<h3>Proffessional Experience</h3>
+ 		<a href=" " class="btn btn-primary">NEW ENTRY</a>
+ 		<table border="5">
+    <thead>
+    	<td>INSTITUTION ICON</td>
+    	<td>INSTITUTION NAME</td>
+        <td>EDUCATION LEVEL</td>
+        <td>EDUCATION COURSE</td>
+        <td>YEAR STARTED</td>
+        <td>YEAR ENDED</td>
+        <td>ACTION</td>
+    </thead>
+    {% for experience in experience%}
+    <tr><td><div class="avatar avatar--small active">
+            <img src="{{experience.avatar.url}}" /></td>
+            <td>{{experience.company}}</td>
+            <td>{{experience.city}}</td>
+        <td>{{experience.country}} </td>
+        <td>{{experience.role}}</td>
+		<td>{{experience.year_started}}</td>
+		<td>{{experience.year_completed}}</td>
+		<td>{{experience.role}}</td>
+        <td>
+        	<a href="" class="btn btn-info">Read More</a>
+        	<a href="" class="btn btn-warning">Edit</a>
+        	<a href="" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+ 		
+ 		
+ 	</div>
+       </div>
+       <div id="projectsdiv">
+       	<a href=" " class="btn btn-primary">NEW ENTRY</a>
+           <h4>Projects</h4>
+          		<table border="5">
+    <thead>
+    	<td>PROJECT ICON</td>
+    	<td>PROJECT TYPE</td>
+        <td>PROJECT NAME</td>
+        <td>PROJECT DATE</td>
+        <td>PROJECT URL</td>
+        <td>PROJECT GALLERY</td>
+        <td>PROJECT DETAILS</td>
+        <td>ACTION</td>
+    </thead>
+    {% for project in projects %}
+    <tr><td><div class="avatar avatar--small active">
+            <img src="{{project.avatar.url}}" /></td>
+            <td>{{project.project_type}}</td>
+            <td>{{project.project_name}}</td>
+        <td>{{project.project_date}} </td>
+        <td>{{project.project_url}}</td>
+		<td>{{project.project_photos}}</td>
+		<td>{{project.project_details}}</td>
+        <td>
+        	<a href="" class="btn btn-info">Read More</a>
+        	<a href="" class="btn btn-warning">Edit</a>
+        	<a href="" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+       </div>
+       <div id="skillsdiv">
+           <h4>Skills</h4>
+           <table border="5">
+    <thead>
+    	<td>SKILL</td>
+    	<td>SKILL NAME</td>
+        <td>ACTION</td>
+    </thead>
+    {% for skill in skills %}
+    <tr>
+    	<td>{{skill.skill_type}}</td>
+    	<td>{{skill.name}}</td>
+    	 <td>
+        	<a href="" class="btn btn-info">Read More</a>
+        	<a href="" class="btn btn-warning">Edit</a>
+        	<a href="" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+       </div>
+       <div id="awardsdiv">
+           <h4>Awards</h4>
+           <p>xhdhddjjdjdj</p>
+       </div>
+       <div id="educationdiv">
+          
+       </div>
+       <div id="contactsdiv">
+           <h4>Contacts</h4>
+           <p>xhdhddjjdjdj</p>
+       </div>
+       <div id="blogsdiv">
+           <h4>Blogs</h4>
+           <p>xhdhddjjdjdj</p>
+       </div>
+       <div id="certificationdiv">
+           <h4>Certifications</h4>
+           <p>xhdhddjjdjdj</p>
+       </div>
+
+       <div id="notificationdiv">
+           <h4>Notifications</h4>
+           <p>xhdhddjjdjdj</p>
+       </div>
+       
+     </section>
+</div>
+</main>
+     </div>
+        </div>
+ 
+ <script type="text/javascript">
+ 
+     function notifications(){
+     	var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'block';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+     }
+     function about(){
+     	var about=document.getElementById('aboutdiv').style.display = 'block';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+
+     }
+     function experience(){
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'block';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+     }
+     function contacts(){
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'block';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+     }
+     function projects(){
+        var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'block';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+    
+ }
+ function skills(){
+    	var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'block';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+ }
+ function awards(){
+ 	   var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'block';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+ }
+ function education(){
+ 	var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'block';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+ }
+ function certifications(){
+ 	    var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'none';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+      var cert=document.getElementById('certificationdiv').style.display = 'block';
+ }
+ function blogs(){
+ 	 var about=document.getElementById('aboutdiv').style.display = 'none';
+     	var experience=document.getElementById('experiencediv').style.display = 'none';
+        var note=document.getElementById('notificationdiv').style.display = 'none';
+        var project=document.getElementById('projectsdiv').style.display = 'none';
+        var skills=document.getElementById('skillsdiv').style.display = 'none';
+        var awards=document.getElementById('awardsdiv').style.display = 'none';
+        var education=document.getElementById('educationdiv').style.display = 'none';
+        var blogs=document.getElementById('blogsdiv').style.display = 'block';
+        var cont=document.getElementById('contactsdiv').style.display = 'none';
+        var cert=document.getElementById('certificationdiv').style.display = 'none';
+ }
+     </script>
+ 
+
+
+{% endblock content %}

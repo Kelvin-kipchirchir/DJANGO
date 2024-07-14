@@ -1,0 +1,57 @@
+{% extends 'main.html'%}
+{% block content %}
+ <style>
+ 	.contact-container{
+ 		background-color: yellow;
+ 	}
+ </style>
+
+<h3>Portfolio</h3>
+	<p>Here is a list of what i do</p>
+
+<div class="contact-container">
+	<div>
+		<h3>All | Apps | Web | Analysis</h3>
+		{% for project in projects %}
+			<ul>
+				<li>All
+					<ul>
+						<li>{{project.project_type}}</li>
+						<li>{{project.project_name}}</li>
+						<li>{{project.project_client}}</li>
+						<li>{{project.avatar.url}}</li>
+						<li>{{project.project_date}}</li>
+						<li>{{project.project_url}}</li>
+						<li>{{project.project_photos.url}}</li>
+						
+						<li>{{project.project_details}}</li>
+
+						<li>App 3</li>
+					</ul>
+
+				</li>
+				<li>Websites
+					<ul>
+						<li>App 1</li>
+						<li>App 2</li>
+						<li>App 3</li>
+					</ul>
+
+				</li>
+				<li>Analytics
+					<ul>
+						<li>App 1</li>
+						<li>App 2</li>
+						<li>App 3</li>
+					</ul>
+
+				</li>
+				
+			</ul>
+			{% endfor %}
+		
+	</div>
+</div>
+
+
+{% endblock content %}
